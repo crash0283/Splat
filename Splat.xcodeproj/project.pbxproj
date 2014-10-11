@@ -16,10 +16,10 @@
 		D329BBCD19E984CF00641010 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D329BBCB19E984CF00641010 /* LaunchScreen.xib */; };
 		D329BBD919E984CF00641010 /* SplatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D329BBD819E984CF00641010 /* SplatTests.swift */; };
 		D329BBE319E9956700641010 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = D329BBE219E9956700641010 /* bg.png */; };
-		D329BBE519E99CBC00641010 /* clouds_01.png in Resources */ = {isa = PBXBuildFile; fileRef = D329BBE419E99CBC00641010 /* clouds_01.png */; };
-		D329BBE719E99D6700641010 /* clouds_02.png in Resources */ = {isa = PBXBuildFile; fileRef = D329BBE619E99D6700641010 /* clouds_02.png */; };
-		D329BBE919E9A18400641010 /* dash.png in Resources */ = {isa = PBXBuildFile; fileRef = D329BBE819E9A18400641010 /* dash.png */; };
-		D329BBEB19E9A44D00641010 /* steeringWheel.png in Resources */ = {isa = PBXBuildFile; fileRef = D329BBEA19E9A44D00641010 /* steeringWheel.png */; };
+		D329BBF019E9D75700641010 /* clouds_01.png in Resources */ = {isa = PBXBuildFile; fileRef = D329BBEC19E9D75700641010 /* clouds_01.png */; };
+		D329BBF119E9D75700641010 /* clouds_02.png in Resources */ = {isa = PBXBuildFile; fileRef = D329BBED19E9D75700641010 /* clouds_02.png */; };
+		D329BBF219E9D75700641010 /* dash.png in Resources */ = {isa = PBXBuildFile; fileRef = D329BBEE19E9D75700641010 /* dash.png */; };
+		D329BBF319E9D75700641010 /* steeringWheel.png in Resources */ = {isa = PBXBuildFile; fileRef = D329BBEF19E9D75700641010 /* steeringWheel.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,10 +46,10 @@
 		D329BBD719E984CF00641010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D329BBD819E984CF00641010 /* SplatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplatTests.swift; sourceTree = "<group>"; };
 		D329BBE219E9956700641010 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
-		D329BBE419E99CBC00641010 /* clouds_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clouds_01.png; sourceTree = "<group>"; };
-		D329BBE619E99D6700641010 /* clouds_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clouds_02.png; sourceTree = "<group>"; };
-		D329BBE819E9A18400641010 /* dash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dash.png; sourceTree = "<group>"; };
-		D329BBEA19E9A44D00641010 /* steeringWheel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = steeringWheel.png; sourceTree = "<group>"; };
+		D329BBEC19E9D75700641010 /* clouds_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clouds_01.png; sourceTree = "<group>"; };
+		D329BBED19E9D75700641010 /* clouds_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clouds_02.png; sourceTree = "<group>"; };
+		D329BBEE19E9D75700641010 /* dash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dash.png; sourceTree = "<group>"; };
+		D329BBEF19E9D75700641010 /* steeringWheel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = steeringWheel.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,11 +96,11 @@
 				D329BBC219E984CF00641010 /* GameScene.swift */,
 				D329BBC419E984CF00641010 /* GameViewController.swift */,
 				D329BBC619E984CF00641010 /* Main.storyboard */,
-				D329BBE419E99CBC00641010 /* clouds_01.png */,
-				D329BBE619E99D6700641010 /* clouds_02.png */,
 				D329BBE219E9956700641010 /* bg.png */,
-				D329BBE819E9A18400641010 /* dash.png */,
-				D329BBEA19E9A44D00641010 /* steeringWheel.png */,
+				D329BBEC19E9D75700641010 /* clouds_01.png */,
+				D329BBED19E9D75700641010 /* clouds_02.png */,
+				D329BBEE19E9D75700641010 /* dash.png */,
+				D329BBEF19E9D75700641010 /* steeringWheel.png */,
 				D329BBC919E984CF00641010 /* Images.xcassets */,
 				D329BBCB19E984CF00641010 /* LaunchScreen.xib */,
 				D329BBBC19E984CF00641010 /* Supporting Files */,
@@ -216,11 +216,11 @@
 				D329BBE319E9956700641010 /* bg.png in Resources */,
 				D329BBCD19E984CF00641010 /* LaunchScreen.xib in Resources */,
 				D329BBCA19E984CF00641010 /* Images.xcassets in Resources */,
-				D329BBE919E9A18400641010 /* dash.png in Resources */,
+				D329BBF219E9D75700641010 /* dash.png in Resources */,
 				D329BBC119E984CF00641010 /* GameScene.sks in Resources */,
-				D329BBE519E99CBC00641010 /* clouds_01.png in Resources */,
-				D329BBE719E99D6700641010 /* clouds_02.png in Resources */,
-				D329BBEB19E9A44D00641010 /* steeringWheel.png in Resources */,
+				D329BBF019E9D75700641010 /* clouds_01.png in Resources */,
+				D329BBF119E9D75700641010 /* clouds_02.png in Resources */,
+				D329BBF319E9D75700641010 /* steeringWheel.png in Resources */,
 				D329BBC819E984CF00641010 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,6 +11,10 @@ import SpriteKit
 class GameScene: SKScene {
     
     var movingObjects = SKNode()
+    var randomNum: UInt32 = UInt32()
+    var randomPlacement: UInt32 = UInt32()
+
+
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -18,6 +22,7 @@ class GameScene: SKScene {
         self.addChild(movingObjects)
         
         animateStripe()
+        //animateTree()
         
         var bg = SKSpriteNode (imageNamed: "bg.png")
         bg.position = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2 + 50)
@@ -54,15 +59,6 @@ class GameScene: SKScene {
             steeringWheel.zPosition = 20
             self.addChild(steeringWheel)
 
-            var tree = SKSpriteNode (imageNamed: "Tree.png")
-            tree.position = CGPointMake(self.frame.size.width / 2 + 70, self.frame.size.height / 2)
-            tree.zPosition = 15
-            movingObjects.addChild(tree)
-        
-            var pineTree = SKSpriteNode (imageNamed: "pineTree.png")
-            pineTree.position = CGPointMake(self.frame.size.width / 2 - 430, self.frame.size.height / 2)
-            pineTree.zPosition = 15
-            movingObjects.addChild(pineTree)
         
         
             var mirror = SKSpriteNode (imageNamed: "mirror.png")
@@ -90,7 +86,7 @@ class GameScene: SKScene {
             
             var dash = SKSpriteNode (imageNamed: "dash.png")
             dash.position = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2 - 380)
-            dash.zPosition = 10
+            dash.zPosition = 15
             self.addChild(dash)
             
             var steeringWheel = SKSpriteNode (imageNamed: "steeringWheel.png")
@@ -98,15 +94,6 @@ class GameScene: SKScene {
             steeringWheel.zPosition = 20
             self.addChild(steeringWheel)
             
-            var tree = SKSpriteNode (imageNamed: "Tree.png")
-            tree.position = CGPointMake(self.frame.size.width / 2 + 80, self.frame.size.height / 2)
-            tree.zPosition = 15
-            movingObjects.addChild(tree)
-            
-            var pineTree = SKSpriteNode (imageNamed: "pineTree.png")
-            pineTree.position = CGPointMake(self.frame.size.width / 2 - 430, self.frame.size.height / 2)
-            pineTree.zPosition = 15
-            movingObjects.addChild(pineTree)
             
             
             var mirror = SKSpriteNode (imageNamed: "mirror.png")
@@ -175,6 +162,82 @@ class GameScene: SKScene {
         
         
     }
+
+    func animateRightTree () {
+
+        
+        if randomNum == 0 {
+            
+            var tree = SKSpriteNode (imageNamed: "Tree.png")
+            tree.position = CGPointMake(self.frame.size.width / 2 + 75 + CGFloat(randomPlacement), self.frame.size.height / 2)
+            tree.zPosition = 9
+            movingObjects.addChild(tree)
+        
+            var moveTree = SKAction.moveByX(2000, y: -800, duration: 4)
+            var scaleTree = SKAction.scaleBy(6, duration: 4)
+            var treeGrp = SKAction.group([moveTree,scaleTree])
+            var treeSeq = SKAction.sequence([treeGrp,SKAction.removeFromParent()])
+            tree.runAction(treeSeq)
+            
+            
+        } else if randomNum == 1 {
+            
+            var pineTree = SKSpriteNode (imageNamed: "pineTree.png")
+
+            pineTree.position = CGPointMake(self.frame.size.width / 2 + 75 + CGFloat(randomPlacement), self.frame.size.height / 2)
+            pineTree.zPosition = 8
+            movingObjects.addChild(pineTree)
+            
+            var moveTree = SKAction.moveByX(2000, y: -800, duration: 4)
+            var scaleTree = SKAction.scaleBy(6, duration: 3)
+            var treeGrp = SKAction.group([moveTree,scaleTree])
+            var treeSeq = SKAction.sequence([treeGrp,SKAction.removeFromParent()])
+            pineTree.runAction(treeSeq)
+            
+            
+        }
+
+
+}
+    
+    func animateLeftTree () {
+        
+        
+        if randomNum == 0 {
+            
+            var pineTree = SKSpriteNode (imageNamed: "pineTree.png")
+
+            pineTree.position = CGPointMake(self.frame.size.width / 2 - 430, self.frame.size.height / 2)
+            pineTree.zPosition = 9
+            movingObjects.addChild(pineTree)
+        
+            var moveTree = SKAction.moveByX(-6000, y: -800, duration: 5)
+            var scaleTree = SKAction.scaleBy(5, duration: 0.5)
+            var treeGrp = SKAction.group([moveTree,scaleTree])
+            var treeSeq = SKAction.sequence([treeGrp,SKAction.removeFromParent()])
+            pineTree.runAction(treeSeq)
+            
+        } else if randomNum == 1 {
+            
+            var tree = SKSpriteNode (imageNamed: "Tree.png")
+
+            tree.position = CGPointMake(self.frame.size.width / 2 - 430, self.frame.size.height / 2)
+            tree.zPosition = 8
+            movingObjects.addChild(tree)
+            
+            var moveTree = SKAction.moveByX(-6000, y: -800, duration: 5)
+            var scaleTree = SKAction.scaleBy(3, duration: 0.5)
+            var treeGrp = SKAction.group([moveTree,scaleTree])
+            var treeSeq = SKAction.sequence([treeGrp,SKAction.removeFromParent()])
+            tree.runAction(treeSeq)
+            
+            
+        }
+        
+        
+    }
+
+    
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         /* Called when a touch begins */
@@ -188,5 +251,21 @@ class GameScene: SKScene {
    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+        
+        randomNum = arc4random_uniform(2)
+        randomPlacement = arc4random_uniform(400)
+        //println(randomNum)
+        
+        var random = arc4random_uniform(9)
+
+        if random == 1 {
+            animateRightTree()
+            
+        } else if random == 8 {
+            
+            animateLeftTree()
+        }
+    
+        
     }
 }

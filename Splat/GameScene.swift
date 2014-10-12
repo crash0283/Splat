@@ -9,8 +9,15 @@
 import SpriteKit
 
 class GameScene: SKScene {
+    
+    var movingObjects = SKNode()
+    
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
+        
+        self.addChild(movingObjects)
+        
+        animateStripe()
         
         var bg = SKSpriteNode (imageNamed: "bg.png")
         bg.position = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2 + 50)
@@ -47,25 +54,12 @@ class GameScene: SKScene {
         var tree = SKSpriteNode (imageNamed: "Tree.png")
         tree.position = CGPointMake(self.frame.size.width / 2 + 70, self.frame.size.height / 2)
         tree.zPosition = 15
-        self.addChild(tree)
+        movingObjects.addChild(tree)
         
         var pineTree = SKSpriteNode (imageNamed: "pineTree.png")
         pineTree.position = CGPointMake(self.frame.size.width / 2 - 430, self.frame.size.height / 2)
         pineTree.zPosition = 15
-        self.addChild(pineTree)
-        
-        var roadStripe1 = SKSpriteNode (imageNamed: "roadStripe_01")
-        roadStripe1.position = CGPointMake(self.frame.size.width / 2 - 175, self.frame.size.height / 2 - 100)
-        roadStripe1.zPosition = 9
-        self.addChild(roadStripe1)
-        
-        var moveStripe = SKAction.moveByX(0, y: -100, duration: 0.3)
-        var scaleStripe = SKAction.scaleTo(2, duration: 0.3)
-        var groupStripe = SKAction.group([moveStripe,scaleStripe])
-        var removeStripe = SKAction.removeFromParent()
-        var stripeSeq = SKAction.sequence([groupStripe,removeStripe])
-        var repeatStripe = SKAction.repeatActionForever(stripeSeq)
-        roadStripe1.runAction(repeatStripe)
+        movingObjects.addChild(pineTree)
         
         
         var mirror = SKSpriteNode (imageNamed: "mirror.png")
@@ -75,10 +69,29 @@ class GameScene: SKScene {
         
 
         
-
         
-
+    }
+    
+    
+    func animateStripe () {
         
+        var roadStripe1 = SKSpriteNode (imageNamed: "roadStripe_01")
+        roadStripe1.position = CGPointMake(self.frame.size.width / 2 - 175, self.frame.size.height / 2 - 50)
+        roadStripe1.zPosition = 9
+        movingObjects.addChild(roadStripe1)
+        
+        var startScale = SKAction.scaleTo(0.02, duration: 0)
+        var moveStripe = SKAction.moveByX(0, y: -300, duration: 0.4)
+        var scaleStripe = SKAction.scaleTo(4, duration: 0.4)
+        var replaceStripe = SKAction.moveByX(0, y: 300, duration: 0)
+        var replaceScale = SKAction.scaleTo(0.02, duration: 0)
+        var groupStripe = SKAction.group([moveStripe,scaleStripe])
+        var startStripeSeq = SKAction.sequence([startScale,groupStripe])
+
+        //var removeStripe = SKAction.removeFromParent()
+
+        var repeatStripe = SKAction.repeatActionForever(SKAction.sequence([startStripeSeq,replaceStripe]))
+        roadStripe1.runAction(repeatStripe)
         
         
         

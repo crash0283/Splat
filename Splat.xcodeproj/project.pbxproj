@@ -20,11 +20,11 @@
 		D329BBF119E9D75700641010 /* clouds_02.png in Resources */ = {isa = PBXBuildFile; fileRef = D329BBED19E9D75700641010 /* clouds_02.png */; };
 		D329BBF219E9D75700641010 /* dash.png in Resources */ = {isa = PBXBuildFile; fileRef = D329BBEE19E9D75700641010 /* dash.png */; };
 		D329BBF319E9D75700641010 /* steeringWheel.png in Resources */ = {isa = PBXBuildFile; fileRef = D329BBEF19E9D75700641010 /* steeringWheel.png */; };
-		D329BBF519EA1A2B00641010 /* Tree.png in Resources */ = {isa = PBXBuildFile; fileRef = D329BBF419EA1A2B00641010 /* Tree.png */; };
 		D35351B919EA1BBA0001C771 /* pineTree.png in Resources */ = {isa = PBXBuildFile; fileRef = D35351B819EA1BBA0001C771 /* pineTree.png */; };
 		D35351BC19EA1CC70001C771 /* roadStripe_01.png in Resources */ = {isa = PBXBuildFile; fileRef = D35351BA19EA1CC70001C771 /* roadStripe_01.png */; };
 		D35351BD19EA1CC70001C771 /* roadStripe_02.png in Resources */ = {isa = PBXBuildFile; fileRef = D35351BB19EA1CC70001C771 /* roadStripe_02.png */; };
 		D35351BF19EA1DD80001C771 /* mirror.png in Resources */ = {isa = PBXBuildFile; fileRef = D35351BE19EA1DD80001C771 /* mirror.png */; };
+		D35351C119EA46A30001C771 /* Tree.png in Resources */ = {isa = PBXBuildFile; fileRef = D35351C019EA46A30001C771 /* Tree.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,11 +55,11 @@
 		D329BBED19E9D75700641010 /* clouds_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clouds_02.png; sourceTree = "<group>"; };
 		D329BBEE19E9D75700641010 /* dash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dash.png; sourceTree = "<group>"; };
 		D329BBEF19E9D75700641010 /* steeringWheel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = steeringWheel.png; sourceTree = "<group>"; };
-		D329BBF419EA1A2B00641010 /* Tree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tree.png; sourceTree = "<group>"; };
 		D35351B819EA1BBA0001C771 /* pineTree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pineTree.png; sourceTree = "<group>"; };
 		D35351BA19EA1CC70001C771 /* roadStripe_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadStripe_01.png; sourceTree = "<group>"; };
 		D35351BB19EA1CC70001C771 /* roadStripe_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roadStripe_02.png; sourceTree = "<group>"; };
 		D35351BE19EA1DD80001C771 /* mirror.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mirror.png; sourceTree = "<group>"; };
+		D35351C019EA46A30001C771 /* Tree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tree.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +113,7 @@
 				D329BBEF19E9D75700641010 /* steeringWheel.png */,
 				D35351BA19EA1CC70001C771 /* roadStripe_01.png */,
 				D35351BB19EA1CC70001C771 /* roadStripe_02.png */,
-				D329BBF419EA1A2B00641010 /* Tree.png */,
+				D35351C019EA46A30001C771 /* Tree.png */,
 				D35351B819EA1BBA0001C771 /* pineTree.png */,
 				D35351BE19EA1DD80001C771 /* mirror.png */,
 				D329BBC919E984CF00641010 /* Images.xcassets */,
@@ -235,11 +235,11 @@
 				D35351BF19EA1DD80001C771 /* mirror.png in Resources */,
 				D329BBCA19E984CF00641010 /* Images.xcassets in Resources */,
 				D329BBF219E9D75700641010 /* dash.png in Resources */,
+				D35351C119EA46A30001C771 /* Tree.png in Resources */,
 				D329BBC119E984CF00641010 /* GameScene.sks in Resources */,
 				D329BBF019E9D75700641010 /* clouds_01.png in Resources */,
 				D329BBF119E9D75700641010 /* clouds_02.png in Resources */,
 				D35351BD19EA1CC70001C771 /* roadStripe_02.png in Resources */,
-				D329BBF519EA1A2B00641010 /* Tree.png in Resources */,
 				D329BBF319E9D75700641010 /* steeringWheel.png in Resources */,
 				D329BBC819E984CF00641010 /* Main.storyboard in Resources */,
 			);

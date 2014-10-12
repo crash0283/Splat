@@ -130,24 +130,23 @@ class GameScene: SKScene {
         
         if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
 
+            var roadStripe1 = SKSpriteNode (imageNamed: "roadStripe_01")
+            roadStripe1.position = CGPointMake(self.frame.size.width / 2 - 175, self.frame.size.height / 2 - 50)
+            roadStripe1.zPosition = 9
+            movingObjects.addChild(roadStripe1)
         
-        var roadStripe1 = SKSpriteNode (imageNamed: "roadStripe_01")
-        roadStripe1.position = CGPointMake(self.frame.size.width / 2 - 175, self.frame.size.height / 2 - 50)
-        roadStripe1.zPosition = 9
-        movingObjects.addChild(roadStripe1)
-        
-        var startScale = SKAction.scaleTo(0.02, duration: 0)
-        var moveStripe = SKAction.moveByX(0, y: -300, duration: 0.4)
-        var scaleStripe = SKAction.scaleTo(4, duration: 0.4)
-        var replaceStripe = SKAction.moveByX(0, y: 300, duration: 0)
-        var replaceScale = SKAction.scaleTo(0.02, duration: 0)
-        var groupStripe = SKAction.group([moveStripe,scaleStripe])
-        var startStripeSeq = SKAction.sequence([startScale,groupStripe])
+            var startScale = SKAction.scaleTo(0.02, duration: 0)
+            var moveStripe = SKAction.moveByX(0, y: -300, duration: 0.4)
+            var scaleStripe = SKAction.scaleTo(4, duration: 0.4)
+            var replaceStripe = SKAction.moveByX(0, y: 300, duration: 0)
+            var replaceScale = SKAction.scaleTo(0.02, duration: 0)
+            var groupStripe = SKAction.group([moveStripe,scaleStripe])
+            var startStripeSeq = SKAction.sequence([startScale,groupStripe])
 
-        //var removeStripe = SKAction.removeFromParent()
+            //var removeStripe = SKAction.removeFromParent()
 
-        var repeatStripe = SKAction.repeatActionForever(SKAction.sequence([startStripeSeq,replaceStripe]))
-        roadStripe1.runAction(repeatStripe)
+            var repeatStripe = SKAction.repeatActionForever(SKAction.sequence([startStripeSeq,replaceStripe]))
+            roadStripe1.runAction(repeatStripe)
             
         } else if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
             

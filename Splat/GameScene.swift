@@ -13,6 +13,7 @@ class GameScene: SKScene {
     var movingObjects = SKNode()
     var randomNum: UInt32 = UInt32()
     var randomPlacement: UInt32 = UInt32()
+    var leftRandomPlacement: UInt32 = UInt32()
 
 
     
@@ -20,6 +21,7 @@ class GameScene: SKScene {
         /* Setup your scene here */
         
         self.addChild(movingObjects)
+        movingObjects.speed = 0
         
         animateStripe()
         //animateTree()
@@ -51,20 +53,26 @@ class GameScene: SKScene {
         
             var dash = SKSpriteNode (imageNamed: "dash.png")
             dash.position = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2 - 280)
-            dash.zPosition = 10
+            dash.zPosition = 40
             self.addChild(dash)
         
             var steeringWheel = SKSpriteNode (imageNamed: "steeringWheel.png")
             steeringWheel.position = CGPointMake(self.frame.size.width / 2 - 400, self.frame.size.height / 2 - 260)
-            steeringWheel.zPosition = 20
+            steeringWheel.zPosition = 50
             self.addChild(steeringWheel)
 
         
         
             var mirror = SKSpriteNode (imageNamed: "mirror.png")
             mirror.position = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2 + 230)
-            mirror.zPosition = 15
+            mirror.zPosition = 31
             self.addChild(mirror)
+            
+            var windshield = SKSpriteNode (imageNamed: "windshield.png")
+            windshield.position = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2 + 60)
+            windshield.alpha = 0.4
+            windshield.zPosition = 30
+            self.addChild(windshield)
             
         } else if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
             
@@ -115,49 +123,22 @@ class GameScene: SKScene {
     
     func animateStripe () {
         
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
 
             var roadStripe1 = SKSpriteNode (imageNamed: "roadStripe_01")
-            roadStripe1.position = CGPointMake(self.frame.size.width / 2 - 175, self.frame.size.height / 2 - 50)
+            roadStripe1.position = CGPointMake(self.frame.size.width / 2 - 175, self.frame.size.height / 2 - 120)
             roadStripe1.zPosition = 9
             movingObjects.addChild(roadStripe1)
         
-            var startScale = SKAction.scaleTo(0.02, duration: 0)
-            var moveStripe = SKAction.moveByX(0, y: -300, duration: 0.4)
-            var scaleStripe = SKAction.scaleTo(4, duration: 0.4)
+            var startScale = SKAction.scaleTo(0.75, duration: 0)
+            var moveStripe = SKAction.moveByX(0, y: -300, duration: 0.5)
+            var scaleStripe = SKAction.scaleTo(5, duration: 0.5)
             var replaceStripe = SKAction.moveByX(0, y: 300, duration: 0)
             var replaceScale = SKAction.scaleTo(0.02, duration: 0)
             var groupStripe = SKAction.group([moveStripe,scaleStripe])
             var startStripeSeq = SKAction.sequence([startScale,groupStripe])
 
-            //var removeStripe = SKAction.removeFromParent()
-
             var repeatStripe = SKAction.repeatActionForever(SKAction.sequence([startStripeSeq,replaceStripe]))
             roadStripe1.runAction(repeatStripe)
-            
-        } else if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
-            
-            var roadStripe1 = SKSpriteNode (imageNamed: "roadStripe_01")
-            roadStripe1.position = CGPointMake(self.frame.size.width / 2 - 175, self.frame.size.height / 2 - 50)
-            roadStripe1.zPosition = 9
-            movingObjects.addChild(roadStripe1)
-            
-            var startScale = SKAction.scaleTo(0.02, duration: 0)
-            var moveStripe = SKAction.moveByX(0, y: -500, duration: 0.5)
-            var scaleStripe = SKAction.scaleTo(6, duration: 0.5)
-            var replaceStripe = SKAction.moveByX(0, y: 500, duration: 0)
-            var replaceScale = SKAction.scaleTo(0.02, duration: 0)
-            var groupStripe = SKAction.group([moveStripe,scaleStripe])
-            var startStripeSeq = SKAction.sequence([startScale,groupStripe])
-            
-            //var removeStripe = SKAction.removeFromParent()
-            
-            var repeatStripe = SKAction.repeatActionForever(SKAction.sequence([startStripeSeq,replaceStripe]))
-            roadStripe1.runAction(repeatStripe)
-            
-            
-            
-        }
         
         
         
@@ -169,12 +150,12 @@ class GameScene: SKScene {
         if randomNum == 0 {
             
             var tree = SKSpriteNode (imageNamed: "Tree.png")
-            tree.position = CGPointMake(self.frame.size.width / 2 + 75 + CGFloat(randomPlacement), self.frame.size.height / 2)
+            tree.position = CGPointMake(self.frame.size.width / 2 + CGFloat(randomPlacement), self.frame.size.height / 2 + 30)
             tree.zPosition = 9
             movingObjects.addChild(tree)
         
-            var moveTree = SKAction.moveByX(2000, y: -800, duration: 4)
-            var scaleTree = SKAction.scaleBy(6, duration: 4)
+            var moveTree = SKAction.moveByX(3000, y: -1000, duration: 3)
+            var scaleTree = SKAction.scaleBy(10, duration: 3)
             var treeGrp = SKAction.group([moveTree,scaleTree])
             var treeSeq = SKAction.sequence([treeGrp,SKAction.removeFromParent()])
             tree.runAction(treeSeq)
@@ -184,12 +165,12 @@ class GameScene: SKScene {
             
             var pineTree = SKSpriteNode (imageNamed: "pineTree.png")
 
-            pineTree.position = CGPointMake(self.frame.size.width / 2 + 75 + CGFloat(randomPlacement), self.frame.size.height / 2)
+            pineTree.position = CGPointMake(self.frame.size.width / 2 + CGFloat(randomPlacement), self.frame.size.height / 2 + 30)
             pineTree.zPosition = 8
             movingObjects.addChild(pineTree)
             
-            var moveTree = SKAction.moveByX(2000, y: -800, duration: 4)
-            var scaleTree = SKAction.scaleBy(6, duration: 3)
+            var moveTree = SKAction.moveByX(3000, y: -1000, duration: 3)
+            var scaleTree = SKAction.scaleBy(10, duration: 3)
             var treeGrp = SKAction.group([moveTree,scaleTree])
             var treeSeq = SKAction.sequence([treeGrp,SKAction.removeFromParent()])
             pineTree.runAction(treeSeq)
@@ -207,7 +188,7 @@ class GameScene: SKScene {
             
             var pineTree = SKSpriteNode (imageNamed: "pineTree.png")
 
-            pineTree.position = CGPointMake(self.frame.size.width / 2 - 430, self.frame.size.height / 2)
+            pineTree.position = CGPointMake(self.frame.size.width / 2 - 430 - CGFloat(leftRandomPlacement), self.frame.size.height / 2 + 40)
             pineTree.zPosition = 9
             movingObjects.addChild(pineTree)
         
@@ -221,7 +202,7 @@ class GameScene: SKScene {
             
             var tree = SKSpriteNode (imageNamed: "Tree.png")
 
-            tree.position = CGPointMake(self.frame.size.width / 2 - 430, self.frame.size.height / 2)
+            tree.position = CGPointMake(self.frame.size.width / 2 - 330 - CGFloat(leftRandomPlacement), self.frame.size.height / 2 + 40)
             tree.zPosition = 8
             movingObjects.addChild(tree)
             
@@ -242,7 +223,7 @@ class GameScene: SKScene {
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         /* Called when a touch begins */
         
-        
+        movingObjects.speed = 1
         
         
         
@@ -252,18 +233,23 @@ class GameScene: SKScene {
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         
-        randomNum = arc4random_uniform(2)
-        randomPlacement = arc4random_uniform(400)
-        //println(randomNum)
+        if movingObjects.speed != 0 {
         
-        var random = arc4random_uniform(9)
+            randomNum = arc4random_uniform(10)
+            randomPlacement = arc4random_uniform(200)
+            leftRandomPlacement = arc4random_uniform(200)
+            //println(randomNum)
+        
+            var random = arc4random_uniform(3)
 
-        if random == 1 {
-            animateRightTree()
+            if random == 1 {
+                animateRightTree()
             
-        } else if random == 8 {
+            } else if random == 2 {
             
-            animateLeftTree()
+                animateLeftTree()
+            }
+            
         }
     
         

@@ -14,7 +14,7 @@ class GameScene: SKScene {
     var randomNum: UInt32 = UInt32()
     var randomPlacement: UInt32 = UInt32()
     var leftRandomPlacement: UInt32 = UInt32()
-
+    var startLabel = SKLabelNode()
 
     
     override func didMoveToView(view: SKView) {
@@ -32,91 +32,55 @@ class GameScene: SKScene {
         bg.zPosition = 0
         self.addChild(bg)
         
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
+        startLabel.text = "Tap To Start"
+        startLabel.position = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2)
+        startLabel.color = SKColor.whiteColor()
+        startLabel.fontSize = 60
+        startLabel.fontName = "Chalkduster"
+        startLabel.zPosition = 100
+        self.addChild(startLabel)
+        
        
 
-            var cloud1 = SKSpriteNode (imageNamed: "clouds_01.png")
-            cloud1.position = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2 + 100)
-            cloud1.zPosition = 1
-            self.addChild(cloud1)
+        var cloud1 = SKSpriteNode (imageNamed: "clouds_01.png")
+        cloud1.position = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2 + 100)
+        cloud1.zPosition = 1
+        self.addChild(cloud1)
         
-            /*var cloud1move = SKAction.moveByX(10000, y: 0, duration: 10000)
-            cloud1.runAction(cloud1move)*/
+        /*var cloud1move = SKAction.moveByX(10000, y: 0, duration: 10000)
+        cloud1.runAction(cloud1move)*/
         
-            var cloud2 = SKSpriteNode (imageNamed: "clouds_02.png")
-            cloud2.position = CGPointMake(self.frame.size.width / 2 + 200, self.frame.size.height / 2 + 100)
-            cloud2.zPosition = 2
-            self.addChild(cloud2)
+        var cloud2 = SKSpriteNode (imageNamed: "clouds_02.png")
+        cloud2.position = CGPointMake(self.frame.size.width / 2 + 200, self.frame.size.height / 2 + 100)
+        cloud2.zPosition = 2
+        self.addChild(cloud2)
         
-            /*var cloud2move = SKAction.moveByX(-10000, y: 0, duration: 5000)
-            cloud2.runAction(cloud2move)*/
+        /*var cloud2move = SKAction.moveByX(-10000, y: 0, duration: 5000)
+        cloud2.runAction(cloud2move)*/
         
-            var dash = SKSpriteNode (imageNamed: "dash.png")
-            dash.position = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2 - 280)
-            dash.zPosition = 40
-            self.addChild(dash)
+        var dash = SKSpriteNode (imageNamed: "dash.png")
+        dash.position = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2 - 280)
+        dash.zPosition = 40
+        self.addChild(dash)
         
-            var steeringWheel = SKSpriteNode (imageNamed: "steeringWheel.png")
-            steeringWheel.position = CGPointMake(self.frame.size.width / 2 - 400, self.frame.size.height / 2 - 260)
-            steeringWheel.zPosition = 50
-            self.addChild(steeringWheel)
+        var steeringWheel = SKSpriteNode (imageNamed: "steeringWheel.png")
+        steeringWheel.position = CGPointMake(self.frame.size.width / 2 - 400, self.frame.size.height / 2 - 260)
+        steeringWheel.zPosition = 50
+        self.addChild(steeringWheel)
 
         
         
-            var mirror = SKSpriteNode (imageNamed: "mirror.png")
-            mirror.position = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2 + 230)
-            mirror.zPosition = 31
-            self.addChild(mirror)
+        var mirror = SKSpriteNode (imageNamed: "mirror.png")
+        mirror.position = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2 + 230)
+        mirror.zPosition = 31
+        self.addChild(mirror)
             
-            var windshield = SKSpriteNode (imageNamed: "windshield.png")
-            windshield.position = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2 + 60)
-            windshield.alpha = 0.4
-            windshield.zPosition = 30
-            self.addChild(windshield)
-            
-        } else if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
-            
-            var cloud1 = SKSpriteNode (imageNamed: "clouds_01.png")
-            cloud1.position = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2 + 200)
-            cloud1.zPosition = 1
-            self.addChild(cloud1)
-            
-            /*var cloud1move = SKAction.moveByX(10000, y: 0, duration: 10000)
-            cloud1.runAction(cloud1move)*/
-            
-            var cloud2 = SKSpriteNode (imageNamed: "clouds_02.png")
-            cloud2.position = CGPointMake(self.frame.size.width / 2 + 200, self.frame.size.height / 2 + 200)
-            cloud2.zPosition = 2
-            self.addChild(cloud2)
-            
-            /*var cloud2move = SKAction.moveByX(-10000, y: 0, duration: 5000)
-            cloud2.runAction(cloud2move)*/
-            
-            var dash = SKSpriteNode (imageNamed: "dash.png")
-            dash.position = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2 - 380)
-            dash.zPosition = 15
-            self.addChild(dash)
-            
-            var steeringWheel = SKSpriteNode (imageNamed: "steeringWheel.png")
-            steeringWheel.position = CGPointMake(self.frame.size.width / 2 - 400, self.frame.size.height / 2 - 360)
-            steeringWheel.zPosition = 20
-            self.addChild(steeringWheel)
-            
-            
-            
-            var mirror = SKSpriteNode (imageNamed: "mirror.png")
-            mirror.position = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2 + 330)
-            mirror.zPosition = 15
-            self.addChild(mirror)
-
-            
-            
-            
-            
-        }
-        
-
-        
+        var windshield = SKSpriteNode (imageNamed: "windshield.png")
+        windshield.position = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2 + 60)
+        windshield.alpha = 0.4
+        windshield.zPosition = 30
+        self.addChild(windshield)
+    
         
     }
     
@@ -224,6 +188,7 @@ class GameScene: SKScene {
         /* Called when a touch begins */
         
         movingObjects.speed = 1
+        startLabel.alpha = 0
         
         
         

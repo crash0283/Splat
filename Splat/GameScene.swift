@@ -16,6 +16,10 @@ class GameScene: SKScene {
     var leftRandomPlacement: UInt32 = UInt32()
     var startLabel = SKLabelNode()
     var emptyList: NSMutableArray = []
+    
+    var bugSpawnUpdate: CFTimeInterval = 0
+    var lastUpdateTime: CFTimeInterval = 0
+
 
     
     override func didMoveToView(view: SKView) {
@@ -25,7 +29,7 @@ class GameScene: SKScene {
         movingObjects.speed = 0
         
         
-        
+        bugs()
         animateStripe()
         //animateTree()
         
@@ -123,8 +127,8 @@ class GameScene: SKScene {
             movingObjects.addChild(tree)
             
             var startScale = SKAction.scaleTo(0.2, duration: 0)
-            var moveTree = SKAction.moveByX(5000, y: -1000, duration: 12)
-            var scaleTree = SKAction.scaleBy(100, duration: 12)
+            var moveTree = SKAction.moveByX(5000, y: -800, duration: 12)
+            var scaleTree = SKAction.scaleBy(100, duration: 15)
             var treeGrp = SKAction.group([moveTree,scaleTree])
             var treeSeq = SKAction.sequence([startScale,treeGrp,SKAction.removeFromParent()])
             tree.runAction(treeSeq)
@@ -146,8 +150,8 @@ class GameScene: SKScene {
             movingObjects.addChild(pineTree)
             
             var startScale = SKAction.scaleTo(0.2, duration: 0)
-            var moveTree = SKAction.moveByX(6000, y: -1000, duration: 12)
-            var scaleTree = SKAction.scaleBy(100, duration: 12)
+            var moveTree = SKAction.moveByX(6000, y: -800, duration: 12)
+            var scaleTree = SKAction.scaleBy(150, duration: 15)
             var treeGrp = SKAction.group([moveTree,scaleTree])
             var treeSeq = SKAction.sequence([startScale,treeGrp,SKAction.removeFromParent()])
             pineTree.runAction(treeSeq)
@@ -178,7 +182,7 @@ class GameScene: SKScene {
             var startScale = SKAction.scaleTo(0.2, duration: 0)
 
             var moveTree = SKAction.moveByX(-3000, y: -1000, duration: 6)
-            var scaleTree = SKAction.scaleBy(100, duration: 6)
+            var scaleTree = SKAction.scaleBy(150, duration: 6)
             var treeGrp = SKAction.group([moveTree,scaleTree])
             var treeSeq = SKAction.sequence([startScale,treeGrp,SKAction.removeFromParent()])
             pineTree.runAction(treeSeq)
@@ -204,6 +208,24 @@ class GameScene: SKScene {
         
         
     }
+    
+    func bugs () {
+        
+        
+        var circle = SKShapeNode (circleOfRadius: 100)
+        
+
+        var circleSpawnY = arc4random_uniform(1000)
+        var circleSpawnX = arc4random_uniform(1000)
+
+        circle.position = CGPointMake(CGFloat(circleSpawnX),CGFloat(circleSpawnY))
+
+        circle.fillColor = SKColor.redColor()
+        circle.zPosition = 29
+        self.addChild(circle)
+        
+        
+    }
 
     
     
@@ -214,9 +236,22 @@ class GameScene: SKScene {
         startLabel.alpha = 0
         
         
-        
-        
     }
+    
+    
+    func updateWithTimeSinceLastUpdate(timeSinceLastUpdate: CFTimeInterval) {
+        
+        bugSpawnUpdate += timeSinceLastUpdate
+        
+        if (bugSpawnUpdate > 4) {
+            
+            bugSpawnUpdate = 0
+            
+            bugs()
+        }
+    }
+    
+
    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
@@ -225,11 +260,11 @@ class GameScene: SKScene {
             
         
             randomNum = arc4random_uniform(10)
-            randomPlacement = arc4random_uniform(200)
+            randomPlacement = arc4random_uniform(10)
             leftRandomPlacement = arc4random_uniform(10)
             //println(randomNum)
         
-            var random = arc4random_uniform(6)
+            var random = arc4random_uniform(3)
 
             if random == 1 {
                 animateRightTree()
@@ -240,6 +275,15 @@ class GameScene: SKScene {
             }
             
         }
+        
+        var timeSinceLastUpdate = currentTime - lastUpdateTime
+        
+        lastUpdateTime = currentTime
+        if timeSinceLastUpdate > 1 {
+            timeSinceLastUpdate = 1.0 / 60.0
+            lastUpdateTime = currentTime
+        }
+        updateWithTimeSinceLastUpdate(timeSinceLastUpdate)
     
         
     }

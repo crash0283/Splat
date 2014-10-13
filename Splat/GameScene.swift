@@ -118,15 +118,15 @@ class GameScene: SKScene {
         if randomNum == 0 {
             
             var tree = SKSpriteNode (imageNamed: "Tree.png")
-            tree.position = CGPointMake(self.frame.size.width / 2 + CGFloat(randomPlacement), self.frame.size.height / 2 + 30)
+            tree.position = CGPointMake(self.frame.size.width / 2 + CGFloat(randomPlacement), self.frame.size.height / 2 - 50)
             tree.zPosition = 20 - CGFloat(emptyList.count)
             movingObjects.addChild(tree)
             
-            
-            var moveTree = SKAction.moveByX(4000, y: -1000, duration: 6)
-            var scaleTree = SKAction.scaleBy(10, duration: 6)
+            var startScale = SKAction.scaleTo(0.2, duration: 0)
+            var moveTree = SKAction.moveByX(5000, y: -1000, duration: 12)
+            var scaleTree = SKAction.scaleBy(100, duration: 12)
             var treeGrp = SKAction.group([moveTree,scaleTree])
-            var treeSeq = SKAction.sequence([treeGrp,SKAction.removeFromParent()])
+            var treeSeq = SKAction.sequence([startScale,treeGrp,SKAction.removeFromParent()])
             tree.runAction(treeSeq)
             
             emptyList.addObject(tree)
@@ -141,14 +141,15 @@ class GameScene: SKScene {
             
             var pineTree = SKSpriteNode (imageNamed: "pineTree.png")
 
-            pineTree.position = CGPointMake(self.frame.size.width / 2 + CGFloat(randomPlacement), self.frame.size.height / 2 + 30)
+            pineTree.position = CGPointMake(self.frame.size.width / 2 + CGFloat(randomPlacement), self.frame.size.height / 2 - 50)
             pineTree.zPosition = 20 - CGFloat(emptyList.count)
             movingObjects.addChild(pineTree)
             
-            var moveTree = SKAction.moveByX(3000, y: -1000, duration: 6)
-            var scaleTree = SKAction.scaleBy(10, duration: 6)
+            var startScale = SKAction.scaleTo(0.2, duration: 0)
+            var moveTree = SKAction.moveByX(6000, y: -1000, duration: 12)
+            var scaleTree = SKAction.scaleBy(100, duration: 12)
             var treeGrp = SKAction.group([moveTree,scaleTree])
-            var treeSeq = SKAction.sequence([treeGrp,SKAction.removeFromParent()])
+            var treeSeq = SKAction.sequence([startScale,treeGrp,SKAction.removeFromParent()])
             pineTree.runAction(treeSeq)
             
             emptyList.addObject(pineTree)
@@ -170,28 +171,32 @@ class GameScene: SKScene {
             
             var pineTree = SKSpriteNode (imageNamed: "pineTree.png")
 
-            pineTree.position = CGPointMake(self.frame.size.width / 2 - 430 - CGFloat(leftRandomPlacement), self.frame.size.height / 2 + 30)
+            pineTree.position = CGPointMake(self.frame.size.width / 2 - 430 - CGFloat(leftRandomPlacement), self.frame.size.height / 2 - 50)
             pineTree.zPosition = 9
             movingObjects.addChild(pineTree)
         
+            var startScale = SKAction.scaleTo(0.2, duration: 0)
+
             var moveTree = SKAction.moveByX(-3000, y: -1000, duration: 6)
-            var scaleTree = SKAction.scaleBy(5, duration: 6)
+            var scaleTree = SKAction.scaleBy(100, duration: 6)
             var treeGrp = SKAction.group([moveTree,scaleTree])
-            var treeSeq = SKAction.sequence([treeGrp,SKAction.removeFromParent()])
+            var treeSeq = SKAction.sequence([startScale,treeGrp,SKAction.removeFromParent()])
             pineTree.runAction(treeSeq)
             
         } else if randomNum == 1 {
             
             var tree = SKSpriteNode (imageNamed: "Tree.png")
 
-            tree.position = CGPointMake(self.frame.size.width / 2 - 400 - CGFloat(leftRandomPlacement), self.frame.size.height / 2 + 30)
+            tree.position = CGPointMake(self.frame.size.width / 2 - 400 - CGFloat(leftRandomPlacement), self.frame.size.height / 2 - 50)
             tree.zPosition = 8
             movingObjects.addChild(tree)
             
+            var startScale = SKAction.scaleTo(0.2, duration: 0)
+
             var moveTree = SKAction.moveByX(-3000, y: -1000, duration: 6)
-            var scaleTree = SKAction.scaleBy(3, duration: 6)
+            var scaleTree = SKAction.scaleBy(100, duration: 6)
             var treeGrp = SKAction.group([moveTree,scaleTree])
-            var treeSeq = SKAction.sequence([treeGrp,SKAction.removeFromParent()])
+            var treeSeq = SKAction.sequence([startScale,treeGrp,SKAction.removeFromParent()])
             tree.runAction(treeSeq)
             
             
@@ -221,10 +226,10 @@ class GameScene: SKScene {
         
             randomNum = arc4random_uniform(10)
             randomPlacement = arc4random_uniform(200)
-            leftRandomPlacement = arc4random_uniform(50)
+            leftRandomPlacement = arc4random_uniform(10)
             //println(randomNum)
         
-            var random = arc4random_uniform(10)
+            var random = arc4random_uniform(6)
 
             if random == 1 {
                 animateRightTree()

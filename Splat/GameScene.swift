@@ -8,30 +8,40 @@
 
 import SpriteKit
 
+
+
 class GameScene: SKScene {
     
     var movingObjects = SKNode()
+    var bugsNode = SKNode()
+    
     var randomNum: UInt32 = UInt32()
     var randomPlacement: UInt32 = UInt32()
     var leftRandomPlacement: UInt32 = UInt32()
     var startLabel = SKLabelNode()
+    
     var emptyList: NSMutableArray = []
     
     var bugSpawnUpdate: CFTimeInterval = 0
     var lastUpdateTime: CFTimeInterval = 0
+    
 
-
+    
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         
+        self.physicsWorld.gravity = CGVector(0,-9.8)
+        
+
         self.addChild(movingObjects)
+        self.addChild(bugsNode)
+        
         movingObjects.speed = 0
+        bugsNode.speed = 0
         
-        
-        bugs()
+    
         animateStripe()
-        //animateTree()
         
         var bg = SKSpriteNode (imageNamed: "bg.png")
         bg.position = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2 + 50)
@@ -211,21 +221,54 @@ class GameScene: SKScene {
     
     func bugs () {
         
+        var splat = SKSpriteNode (imageNamed: "splat_02.png")
         
-        var circle = SKShapeNode (circleOfRadius: 100)
+        var arcMax = 0.1
         
+        var minSpawnX = 0
+        var maxSpawnX = self.frame.size.width - 75
+        
+        
+        var minSpawnY = self.frame.size.height / 2 - 100
+        var maxSpawnY = (self.frame.size.height) - 475
 
-        var circleSpawnY = arc4random_uniform(1000)
-        var circleSpawnX = arc4random_uniform(1000)
 
-        circle.position = CGPointMake(CGFloat(circleSpawnX),CGFloat(circleSpawnY))
+        var totalSpawnX = arc4random_uniform(UInt32(maxSpawnY)) + UInt32(minSpawnY)
+        var totalSpawnY = arc4random_uniform(UInt32(maxSpawnY)) + UInt32(minSpawnY)
+        println("X: \(totalSpawnX) Y: \(totalSpawnY)")
 
-        circle.fillColor = SKColor.redColor()
-        circle.zPosition = 29
-        self.addChild(circle)
+        splat.position = CGPointMake(CGFloat(totalSpawnX) ,CGFloat(totalSpawnY))
+
+        splat.zPosition = 29
+        splat.alpha = 1
+        
+        splat.physicsBody = SKPhysicsBody()
+        splat.physicsBody?.dynamic = false
+        
+        
+        splat.name = "splat" + String(arc4random())
+        var randAngle = arc4random_uniform(90)
+        var randSize = arc4random_uniform(2) + 1
+        //print(randSize)
+        
+        var changeColor = SKAction.colorizeWithColor(SKColor.blackColor(), colorBlendFactor: 0.5, duration: 5)
+        var randRotation = SKAction.rotateByAngle(CGFloat(randAngle), duration: 0)
+        var randScale = SKAction.scaleTo(1.5, duration: 0)
+        
+        var splatGrp = SKAction.group([randRotation,randScale,changeColor])
+        splat.runAction(splatGrp)
+
+        
+        bugsNode.addChild(splat)
+        //println(splat)
+        
+        
+        
         
         
     }
+    
+
 
     
     
@@ -233,6 +276,7 @@ class GameScene: SKScene {
         /* Called when a touch begins */
         
         movingObjects.speed = 1
+        bugsNode.speed = 1
         startLabel.alpha = 0
         
         
@@ -243,7 +287,7 @@ class GameScene: SKScene {
         
         bugSpawnUpdate += timeSinceLastUpdate
         
-        if (bugSpawnUpdate > 4) {
+        if (bugSpawnUpdate > 2) {
             
             bugSpawnUpdate = 0
             
@@ -256,7 +300,7 @@ class GameScene: SKScene {
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         
-        if movingObjects.speed != 0 {
+        if movingObjects.speed != 0 && bugsNode.speed != 0 {
             
         
             randomNum = arc4random_uniform(10)
@@ -264,12 +308,12 @@ class GameScene: SKScene {
             leftRandomPlacement = arc4random_uniform(10)
             //println(randomNum)
         
-            var random = arc4random_uniform(3)
+            var random = arc4random_uniform(10)
 
             if random == 1 {
                 animateRightTree()
             
-            } else if random == 2 {
+            } else if random == 5 {
             
                 animateLeftTree()
             }
@@ -278,13 +322,15 @@ class GameScene: SKScene {
         
         var timeSinceLastUpdate = currentTime - lastUpdateTime
         
-        lastUpdateTime = currentTime
-        if timeSinceLastUpdate > 1 {
-            timeSinceLastUpdate = 1.0 / 60.0
+        if movingObjects.speed != 0 && bugsNode.speed != 0 {
+        
             lastUpdateTime = currentTime
+            if timeSinceLastUpdate > 1 {
+                timeSinceLastUpdate = 1.0 / 60.0
+                lastUpdateTime = currentTime
+            }
+            updateWithTimeSinceLastUpdate(timeSinceLastUpdate)
         }
-        updateWithTimeSinceLastUpdate(timeSinceLastUpdate)
-    
         
     }
 }

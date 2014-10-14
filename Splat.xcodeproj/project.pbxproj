@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D30380D119EC84720071F6FE /* splat_01.png in Resources */ = {isa = PBXBuildFile; fileRef = D30380D019EC84720071F6FE /* splat_01.png */; };
+		D30380D319EC85F90071F6FE /* splat_02.png in Resources */ = {isa = PBXBuildFile; fileRef = D30380D219EC85F90071F6FE /* splat_02.png */; };
 		D329BBBF19E984CF00641010 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D329BBBE19E984CF00641010 /* AppDelegate.swift */; };
 		D329BBC119E984CF00641010 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = D329BBC019E984CF00641010 /* GameScene.sks */; };
 		D329BBC319E984CF00641010 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D329BBC219E984CF00641010 /* GameScene.swift */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D30380D019EC84720071F6FE /* splat_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splat_01.png; sourceTree = "<group>"; };
+		D30380D219EC85F90071F6FE /* splat_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splat_02.png; sourceTree = "<group>"; };
 		D329BBB919E984CF00641010 /* Splat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Splat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D329BBBD19E984CF00641010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D329BBBE19E984CF00641010 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +122,8 @@
 				D35351B819EA1BBA0001C771 /* pineTree.png */,
 				D35351C219EA470F0001C771 /* Tree.png */,
 				D35351BE19EA1DD80001C771 /* mirror.png */,
+				D30380D019EC84720071F6FE /* splat_01.png */,
+				D30380D219EC85F90071F6FE /* splat_02.png */,
 				D389B13F19EB2CDF001F599D /* windshield.png */,
 				D329BBC919E984CF00641010 /* Images.xcassets */,
 				D329BBCB19E984CF00641010 /* LaunchScreen.xib */,
@@ -234,6 +240,7 @@
 				D35351B919EA1BBA0001C771 /* pineTree.png in Resources */,
 				D35351BC19EA1CC70001C771 /* roadStripe_01.png in Resources */,
 				D329BBE319E9956700641010 /* bg.png in Resources */,
+				D30380D119EC84720071F6FE /* splat_01.png in Resources */,
 				D329BBCD19E984CF00641010 /* LaunchScreen.xib in Resources */,
 				D35351BF19EA1DD80001C771 /* mirror.png in Resources */,
 				D329BBCA19E984CF00641010 /* Images.xcassets in Resources */,
@@ -243,6 +250,7 @@
 				D329BBC119E984CF00641010 /* GameScene.sks in Resources */,
 				D329BBF019E9D75700641010 /* clouds_01.png in Resources */,
 				D329BBF119E9D75700641010 /* clouds_02.png in Resources */,
+				D30380D319EC85F90071F6FE /* splat_02.png in Resources */,
 				D35351BD19EA1CC70001C771 /* roadStripe_02.png in Resources */,
 				D329BBF319E9D75700641010 /* steeringWheel.png in Resources */,
 				D329BBC819E984CF00641010 /* Main.storyboard in Resources */,

@@ -225,15 +225,15 @@ class GameScene: SKScene {
         
         var arcMax = 0.1
         
-        var minSpawnX = 0
-        var maxSpawnX = self.frame.size.width - 75
+        var minSpawnX = 50
+        var maxSpawnX = self.frame.size.width
         
         
         var minSpawnY = self.frame.size.height / 2 - 100
         var maxSpawnY = (self.frame.size.height) - 475
 
 
-        var totalSpawnX = arc4random_uniform(UInt32(maxSpawnY)) + UInt32(minSpawnY)
+        var totalSpawnX = arc4random_uniform(UInt32(maxSpawnX)) + UInt32(minSpawnX)
         var totalSpawnY = arc4random_uniform(UInt32(maxSpawnY)) + UInt32(minSpawnY)
         println("X: \(totalSpawnX) Y: \(totalSpawnY)")
 
